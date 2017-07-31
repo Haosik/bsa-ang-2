@@ -11,7 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,10 @@ import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModu
     AppRoutingModule,
     BrowserAnimationsModule,
     MdButtonModule,
+    MdInputModule,
     MdCardModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MdIconModule
+    MdIconModule,
+    MdSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
