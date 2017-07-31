@@ -1,35 +1,41 @@
-<p>
-  registration works!
-</p>
-<form class="example-form">
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="Company (disabled)" disabled value="Google">
-  </md-input-container>
+<div class="container">
+  <h3>Registration:</h3>
+  <form novalidate (ngSubmit)="submitRegForm(regForm)" class="registration-form" id="registration-form" #regForm="ngForm">
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="First name">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="Long Last Name That Will Be Truncated">
-    </md-input-container></td>
-  </tr></table>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="first_name" mdInput placeholder="First name">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="last_name" mdInput placeholder="Last name">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input autocomplete="false" ngModel name="email" email mdInput required placeholder="Email">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-select [(ngModel)]="year" name="year" required floatPlaceholder="never">
+        <md-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </md-option>
+      </md-select>
+      <label class="year-misc">Birth year</label>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="password" type="password" [minlength]="3" mdInput required placeholder="Password">
+      </md-input-container>
+    </div>
 
-  <p>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-    </md-input-container>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address 2"></textarea>
-    </md-input-container>
-  </p>
+    <button type="submit" md-raised-button>Submit form</button>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="City">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="State">
-    </md-input-container></td>
-  </tr></table>
-</form>
+  </form>
+  <div class="success-box" [hidden]="!userCreated"> Congratulation! You can now
+    <a md-button routerLink="/login" href="#">
+      <md-icon>account_box</md-icon>login</a> using the information passed ;)</div>
+  <div class="fail-box" [hidden]="!userFailed">Sorry, something went wrong. Please check the information you've entered...</div>
+</div>

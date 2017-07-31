@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent} from './error/error.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RecoverComponent } from './recover/recover.component';
+import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [

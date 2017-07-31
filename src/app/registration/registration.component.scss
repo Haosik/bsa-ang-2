@@ -1,0 +1,20 @@
+.success-box {
+	margin-top: 15px;
+	font-size: 20px;
+	color: #eee;
+	a {
+		font-weight: 700;
+		font-size: 24px;
+		text-decoration: underline;
+	}
+}
+.fail-box {
+	color: tomato;
+	font-weight: 700;
+}
+.year-misc {
+	display: inline-block;
+	vertical-align: bottom;
+	padding: 6px 0;
+	border-bottom: 1px solid #484848;
+}

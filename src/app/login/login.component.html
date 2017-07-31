@@ -1,39 +1,21 @@
-<p>
-  login works!
-</p>
-<form class="example-form">
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="Company (disabled)" disabled value="Google">
-  </md-input-container>
+<div class="container">
+  <h3>Login:</h3>
+  <form novalidate (ngSubmit)="submitLoginForm(loginForm)" class="login-form" id="login-form" #loginForm="ngForm">
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="First name">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="Long Last Name That Will Be Truncated">
-    </md-input-container></td>
-  </tr></table>
+    <div class="form-box">
+      <md-input-container class="">
+        <input autocomplete="false" ngModel name="email" email mdInput required placeholder="Email">
+      </md-input-container>
+    </div>
 
-  <p>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-    </md-input-container>
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="Address 2"></textarea>
-    </md-input-container>
-  </p>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="password" type="password" [minlength]="5" mdInput required placeholder="Password">
+      </md-input-container>
+    </div>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="City">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="State">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-      <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-    </md-input-container></td>
-  </tr></table>
-</form>
+    <button type="submit" md-raised-button>Log in</button>
+
+  </form>
+
+</div>

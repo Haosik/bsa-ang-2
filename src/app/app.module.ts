@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
@@ -11,7 +12,10 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule } from '@angular/material';
+import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule, MdSelectModule } from '@angular/material';
+import { RecoveredComponent } from './recover/recovered/recovered.component';
+
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -21,19 +25,22 @@ import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule
     RecoverComponent,
     HeaderComponent,
     ErrorComponent,
-    HomeComponent
+    HomeComponent,
+    RecoveredComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdInputModule,
     MdCardModule,
     MdIconModule,
-    MdSortModule
+    MdSortModule,
+    MdSelectModule
   ],
-  providers: [],
+  providers: [UsersService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
