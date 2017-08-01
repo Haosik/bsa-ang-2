@@ -7,10 +7,13 @@ import { RecoverComponent } from './recover/recover.component';
 import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { LoginComponent } from './login/login.component';
 
+import { AuthGuard } from './auth.guard';
+
 const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent,
+    canActivate: [AuthGuard],
     children: []
   },
   {
@@ -25,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard],
     component: HomeComponent
   },
    {

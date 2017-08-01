@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth.guard';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -16,6 +17,7 @@ import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule
 import { RecoveredComponent } from './recover/recovered/recovered.component';
 
 import { UsersService } from './users.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { UsersService } from './users.service';
     HeaderComponent,
     ErrorComponent,
     HomeComponent,
-    RecoveredComponent
+    RecoveredComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { UsersService } from './users.service';
     MdSortModule,
     MdSelectModule
   ],
-  providers: [UsersService, FormBuilder],
+  providers: [UsersService, FormBuilder, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
