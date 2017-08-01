@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdButtonModule, MdInputModule, MdSelectModule } from '@angular/material';
 import { UsersService } from '../users.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../user';
@@ -15,6 +14,7 @@ export class RegistrationComponent implements OnInit {
   user: User;
   userCreated = false;
   userFailed = false;
+  failTimeout: any;
 
   constructor(private usersService: UsersService) {
     for (let i = this.year; i > 1899; i--) {
@@ -35,7 +35,8 @@ export class RegistrationComponent implements OnInit {
       this.userCreated = true;
     } else {
       this.userFailed = true;
-      setTimeout(() => {
+      clearTimeout(this.failTimeout);
+      this.failTimeout = setTimeout(() => {
         this.userFailed = false;
       }, 3000);
     }

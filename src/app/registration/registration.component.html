@@ -1,5 +1,6 @@
 <div class="container">
   <h3>Registration:</h3>
+  <div class="form-hint">* - required</div>
   <form novalidate (ngSubmit)="submitRegForm(regForm)" class="registration-form" id="registration-form" #regForm="ngForm">
 
     <div class="form-box">
@@ -34,6 +35,7 @@
     <button type="submit" md-raised-button>Submit form</button>
 
   </form>
+
   <div class="success-box" [hidden]="!userCreated"> Congratulation! You can now
     <a md-button routerLink="/login" href="#">
       <md-icon>account_box</md-icon>login</a> using the information passed ;)</div>

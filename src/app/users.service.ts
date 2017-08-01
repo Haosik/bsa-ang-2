@@ -4,10 +4,10 @@ import { User } from './user';
 @Injectable()
 export class UsersService {
 
-  storageUsersEmpty = true;
-  users: User[] = [];
-  userAuthorised = false;
-  usersInStorage = [];
+  public storageUsersEmpty = true;
+  public users: User[] = [];
+  public userAuthorised = false;
+  public usersInStorage = [];
 
   mockedUsers: User[] = [
     {
@@ -25,13 +25,14 @@ export class UsersService {
   }
 
   getUsersFromStorage() {
-    const usersInStorage = JSON.parse(localStorage.getItem('usersList'));
+    this.usersInStorage = JSON.parse(localStorage.getItem('usersList'));
 
-    if (usersInStorage && usersInStorage.length > 0) {
+    if (this.usersInStorage.length > 0) {
       this.users = [...this.usersInStorage];
     } else {
       this.users = [...this.mockedUsers];
     }
+
   }
 
   getUsers() {
@@ -41,7 +42,27 @@ export class UsersService {
   create(user: User) {
     this.users.push(user);
 
-    localStorage.setItem( JSON.stringify(this.users), 'usersList');
+    localStorage.setItem('usersList', JSON.stringify(this.users));
+  }
+
+  checkUserLogin(login, cb) {
+    let wrongEmail = true;
+    this.users.forEach((el, ind) => {
+      if (el.email === login.email && el.password === login.password) {
+        wrongEmail = false;
+        this.userAuthorised = true;
+        cb('user ok');
+        return;
+      } else if (el.email === login.email && el.password !== login.password) {
+        wrongEmail = false;
+        cb('wrong password');
+        return;
+      }
+    });
+    if (wrongEmail) {
+      cb('wrong email');
+    }
+    return;
   }
 
   update(user: User) {
