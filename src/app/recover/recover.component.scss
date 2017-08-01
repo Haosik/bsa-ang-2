@@ -1,8 +1,21 @@
+.answer-box {
+	padding: 15px;
+}
+.random-first {
+	display: inline-block;
+	transform: rotate(15deg);
+}
+.random-second {
+	display: inline-block;
+	transform: rotate(-15deg);
+}
 .error {
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 15px;
   color: tomato;
 }
+
 .submit {
-	margin-top: 15px;
+  margin-top: 15px;
 }

@@ -32,7 +32,6 @@ export class UsersService {
     } else {
       this.users = [...this.mockedUsers];
     }
-
   }
 
   getUsers() {
@@ -64,6 +63,7 @@ export class UsersService {
     }
     return;
   }
+
   checkUserEmail(email, cb) {
     let wrongEmail = true;
     this.users.forEach((el, ind) => {

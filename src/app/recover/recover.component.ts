@@ -10,8 +10,11 @@ export class RecoverComponent implements OnInit {
   randomFirst: number;
   randomSecond: number;
   userPassword: string;
+
   wrongEmail = false;
   wrongAnswer = false;
+  emailTimer: any;
+  answerTimer: any;
 
   constructor(private usersService: UsersService) { }
 
@@ -21,19 +24,26 @@ export class RecoverComponent implements OnInit {
   }
 
   submitRecoverForm(recoverForm) {
+    clearTimeout(this.emailTimer);
+    clearTimeout(this.answerTimer);
+    this.wrongEmail = false;
+    this.wrongAnswer = false;
+
     if (Number(recoverForm.value.answer) === (this.randomFirst + this.randomSecond)) {
-      this.usersService.checkUserEmail(recoverForm.email, (result) => {
+      this.usersService.checkUserEmail(recoverForm.value.email, (result) => {
         if (result === 'error') {
           this.wrongEmail = true;
-          setTimeout(() => {
+          this.emailTimer = setTimeout(() => {
             this.wrongEmail = false;
           }, 5000);
+        } else {
+          console.log(result);
+          console.log('Redirect to children - Recovered component');
         }
-        console.log(result);
       });
     } else {
       this.wrongAnswer = true;
-      setTimeout(() => {
+      this.answerTimer = setTimeout(() => {
         this.wrongAnswer = false;
       }, 5000);
       console.log('Wrong answer!');
