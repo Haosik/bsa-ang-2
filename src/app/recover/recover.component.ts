@@ -41,12 +41,14 @@ export class RecoverComponent implements OnInit {
           this.emailTimer = setTimeout(() => {
             this.wrongEmail = false;
           }, 5000);
+          return;
         } else {
           this.recoveringEmail = recoverForm.value.email;
           this.recoveringPassword = result;
           this.usersService.setRecoveredUser(this.recoveringEmail, this.recoveringPassword);
           console.log('Redirect to children - Recovered component');
           this.router.navigate(['recover/recovered']);
+          return;
         }
       });
     } else {
@@ -55,6 +57,7 @@ export class RecoverComponent implements OnInit {
         this.wrongAnswer = false;
       }, 5000);
       console.log('Wrong answer!');
+      return;
     }
   }
 }

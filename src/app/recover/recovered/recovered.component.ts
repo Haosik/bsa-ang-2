@@ -19,6 +19,8 @@ export class RecoveredComponent implements OnInit {
       this.recoveredUser = data;
       this.recoveredEmail = this.recoveredUser.email;
       this.recoveredPassword = this.recoveredUser.password;
+
+      this.usersService.setRecoveredUser('', '');
     });
   }
 

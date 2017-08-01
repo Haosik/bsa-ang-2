@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       this.loginStatus = status;
 
       if (this.loginStatus === 'user ok') {
+        this.usersService.setActiveUser(login.email);
         console.log('redirect!!!');
         return;
       } else if (this.loginStatus === 'wrong email') {

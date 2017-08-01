@@ -5,8 +5,8 @@ import { User } from './user';
 export class UsersService {
 
   private recoveredUser = {
-    email: '123',
-    password: '321'
+    email: '',
+    password: ''
   };
 
   public storageUsersEmpty = true;
@@ -93,6 +93,14 @@ export class UsersService {
     cb(this.recoveredUser);
     return;
   }
+
+  setActiveUser(email) {
+    localStorage.setItem('activeUser', email);
+  }
+  getActiveUser() {
+    localStorage.getItem('activeUser');
+  }
+
 
   update(user: User) {
     return this.users[0];

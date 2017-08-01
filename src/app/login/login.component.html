@@ -4,7 +4,7 @@
 
     <div class="form-box">
       <md-input-container class="">
-        <input autocomplete="false" ngModel name="email" email mdInput required placeholder="Email">
+        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email">
       </md-input-container>
     </div>
 
