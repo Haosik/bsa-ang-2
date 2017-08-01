@@ -10,6 +10,7 @@ export class RecoveredComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

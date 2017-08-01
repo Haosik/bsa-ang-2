@@ -64,9 +64,27 @@ export class UsersService {
     }
     return;
   }
+  checkUserEmail(email, cb) {
+    let wrongEmail = true;
+    this.users.forEach((el, ind) => {
+      if (el.email === email) {
+        wrongEmail = false;
+        cb(el.password);
+        return;
+      }
+    });
+    if (wrongEmail === true) {
+      cb('error');
+      return;
+    }
+  }
 
   update(user: User) {
     return this.users[0];
+  }
+
+  generateRandomNum(end) {
+    return Math.floor((Math.random() * end) + 1);
   }
 
 }
