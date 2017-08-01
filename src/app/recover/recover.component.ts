@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-recover',
@@ -19,7 +21,7 @@ export class RecoverComponent implements OnInit {
   recoveringEmail = '';
   recoveringPassword = '';
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public router: Router) { }
 
   ngOnInit() {
     this.randomFirst = this.usersService.generateRandomNum(100);
@@ -44,6 +46,7 @@ export class RecoverComponent implements OnInit {
           this.recoveringPassword = result;
           this.usersService.setRecoveredUser(this.recoveringEmail, this.recoveringPassword);
           console.log('Redirect to children - Recovered component');
+          this.router.navigate(['recover/recovered']);
         }
       });
     } else {
