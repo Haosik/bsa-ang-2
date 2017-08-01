@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../users.service';
 
 @Component({
   selector: 'app-recovered',
@@ -6,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recovered.component.scss']
 })
 export class RecoveredComponent implements OnInit {
+  recoveredUser: any;
+  recoveredEmail: string;
+  recoveredPassword: string;
 
-  constructor() { }
+  constructor(private usersService: UsersService) {
+  }
 
   ngOnInit() {
-
+    this.usersService.getRecoveredUser((data) => {
+      this.recoveredUser = data;
+      this.recoveredEmail = this.recoveredUser.email;
+      this.recoveredPassword = this.recoveredUser.password;
+    });
   }
 
 }

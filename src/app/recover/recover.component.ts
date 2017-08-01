@@ -16,6 +16,9 @@ export class RecoverComponent implements OnInit {
   emailTimer: any;
   answerTimer: any;
 
+  recoveringEmail = '';
+  recoveringPassword = '';
+
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
@@ -37,7 +40,9 @@ export class RecoverComponent implements OnInit {
             this.wrongEmail = false;
           }, 5000);
         } else {
-          console.log(result);
+          this.recoveringEmail = recoverForm.value.email;
+          this.recoveringPassword = result;
+          this.usersService.setRecoveredUser(this.recoveringEmail, this.recoveringPassword);
           console.log('Redirect to children - Recovered component');
         }
       });

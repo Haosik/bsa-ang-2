@@ -4,6 +4,11 @@ import { User } from './user';
 @Injectable()
 export class UsersService {
 
+  private recoveredUser = {
+    email: '123',
+    password: '321'
+  };
+
   public storageUsersEmpty = true;
   public users: User[] = [];
   public userAuthorised = false;
@@ -77,6 +82,16 @@ export class UsersService {
       cb('error');
       return;
     }
+  }
+
+  setRecoveredUser(recEmail, recPassword) {
+    this.recoveredUser.email = recEmail;
+    this.recoveredUser.password = recPassword;
+  }
+
+  getRecoveredUser(cb) {
+    cb(this.recoveredUser);
+    return;
   }
 
   update(user: User) {
