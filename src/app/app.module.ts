@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.guard';
+import { BlockWhenAuthGuard } from './block-when-auth.guard';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -44,7 +45,7 @@ import { ProfileComponent } from './profile/profile.component';
     MdSortModule,
     MdSelectModule
   ],
-  providers: [UsersService, AuthGuard],
+  providers: [UsersService, AuthGuard, BlockWhenAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,6 +27,7 @@ export class UsersService {
 
   constructor() {
     this.getUsersFromStorage();
+    this.checkActiveUser();
   }
 
   getUsersFromStorage() {
@@ -45,7 +46,6 @@ export class UsersService {
 
   create(user: User) {
     this.users.push(user);
-
     localStorage.setItem('usersList', JSON.stringify(this.users));
   }
 
@@ -55,16 +55,16 @@ export class UsersService {
       if (el.email === login.email && el.password === login.password) {
         wrongEmail = false;
         this.userAuthorised = true;
-        cb('user ok');
+        cb('user ok', el);
         return;
       } else if (el.email === login.email && el.password !== login.password) {
         wrongEmail = false;
-        cb('wrong password');
+        cb('wrong password', null);
         return;
       }
     });
     if (wrongEmail) {
-      cb('wrong email');
+      cb('wrong email', null);
     }
     return;
   }
@@ -94,11 +94,25 @@ export class UsersService {
     return;
   }
 
-  setActiveUser(email) {
-    localStorage.setItem('activeUser', email);
+  setActiveUser(email?: string) {
+    if (email) {
+      this.userAuthorised = true;
+      localStorage.setItem('activeUser', email);
+    } else {
+      this.userAuthorised = false;
+    }
   }
   getActiveUser() {
     localStorage.getItem('activeUser');
+  }
+  checkActiveUser() {
+    if (localStorage.getItem('activeUser')) {
+      this.userAuthorised = true;
+      return true;
+    } else {
+      this.userAuthorised = false;
+      return false;
+    }
   }
 
 

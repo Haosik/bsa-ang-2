@@ -8,36 +8,41 @@ import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './auth.guard';
+import { BlockWhenAuthGuard } from './block-when-auth.guard';
 
 const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent,
-    canActivate: [AuthGuard],
+    canActivate: [BlockWhenAuthGuard],
     children: []
   },
   {
     path: 'recover',
+    pathMatch: 'prefix',
+    canActivate: [BlockWhenAuthGuard],
+    component: RecoverComponent,
     children: [{
-      path: '',
-      component: RecoverComponent
-    }, {
       path: 'recovered',
+      canActivate: [BlockWhenAuthGuard],
       component: RecoveredComponent
     }]
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [BlockWhenAuthGuard],
     children: []
   },
   {
     path: '',
-    component: HomeComponent
+    pathMatch: 'full',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '/'
   }
 ];
 

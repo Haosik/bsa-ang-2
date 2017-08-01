@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public router: Router) { }
 
   loginStatus: string;
 
@@ -20,12 +21,12 @@ export class LoginComponent implements OnInit {
   submitLoginForm(form) {
     const login = { ...form.value };
     console.log(login);
-    this.usersService.checkUserLogin(login, (status) => {
+    this.usersService.checkUserLogin(login, (status, user) => {
       this.loginStatus = status;
 
       if (this.loginStatus === 'user ok') {
-        this.usersService.setActiveUser(login.email);
-        console.log('redirect!!!');
+        this.usersService.setActiveUser(JSON.stringify(user));
+        this.router.navigate(['/']);
         return;
       } else if (this.loginStatus === 'wrong email') {
         console.log('Wrong email!');

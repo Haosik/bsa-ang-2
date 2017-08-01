@@ -6,7 +6,7 @@ import { UsersService } from './users.service';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class BlockWhenAuthGuard implements CanActivate {
 
   constructor(private router: Router, private usersService: UsersService) {}
 
@@ -14,10 +14,10 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       if (this.usersService.userAuthorised === true) {
-        return true;
-      } else {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         return false;
+      } else {
+        return true;
       }
   }
 }
