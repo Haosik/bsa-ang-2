@@ -13,13 +13,15 @@ import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
+import { UserslistComponent } from './userslist/userslist.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdInputModule, MdCardModule, MdIconModule, MdSortModule, MdSelectModule } from '@angular/material';
+import { MdButtonModule, MdInputModule, MdIconModule, MdSortModule, MdSelectModule, MdTabsModule } from '@angular/material';
 
 
 import { UsersService } from './users.service';
 import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ProfileComponent } from './profile/profile.component';
     HeaderComponent,
     ErrorComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserslistComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +43,10 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule,
     MdButtonModule,
     MdInputModule,
-    MdCardModule,
     MdIconModule,
     MdSortModule,
-    MdSelectModule
+    MdSelectModule,
+    MdTabsModule
   ],
   providers: [UsersService, AuthGuard, BlockWhenAuthGuard],
   bootstrap: [AppComponent]
