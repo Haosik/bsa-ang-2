@@ -4,7 +4,8 @@
 
     <div class="form-box">
       <md-input-container class="">
-        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email">
+        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          placeholder="Email">
       </md-input-container>
     </div>
 
@@ -18,4 +19,9 @@
 
   </form>
 
+  <br>
+  <nav class="nav-links">
+    <a routerLink="/registration" routerLinkActive="active">Registration page</a>
+    <a routerLink="/recover" routerLinkActive="active">Recover password</a>
+  </nav>
 </div>

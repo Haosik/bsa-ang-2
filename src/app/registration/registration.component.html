@@ -15,7 +15,8 @@
     </div>
     <div class="form-box">
       <md-input-container class="">
-        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email">
+        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          placeholder="Email">
       </md-input-container>
     </div>
     <div class="form-box">
@@ -40,4 +41,10 @@
     <a md-button routerLink="/login" href="#">
       <md-icon>account_box</md-icon>login</a> using the information passed ;)</div>
   <div class="fail-box" [hidden]="!userFailed">Sorry, something went wrong. Please check the information you've entered...</div>
+
+  <br>
+  <nav class="nav-links">
+    <a routerLink="/recover" routerLinkActive="active">Recover password</a>
+    <a routerLink="/login" routerLinkActive="active">Login page</a>
+  </nav>
 </div>

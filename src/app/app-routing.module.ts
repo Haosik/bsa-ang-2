@@ -19,10 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'recover',
-    pathMatch: 'prefix',
-    canActivate: [BlockWhenAuthGuard],
-    component: RecoverComponent,
     children: [{
+      path: '',
+      canActivate: [BlockWhenAuthGuard],
+      component: RecoverComponent,
+    }, {
       path: 'recovered',
       canActivate: [BlockWhenAuthGuard],
       component: RecoveredComponent
