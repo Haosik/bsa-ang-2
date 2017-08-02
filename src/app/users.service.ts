@@ -103,7 +103,7 @@ export class UsersService {
     }
   }
   getActiveUser() {
-    localStorage.getItem('activeUser');
+    return JSON.parse(localStorage.getItem('activeUser'));
   }
   checkActiveUser() {
     if (localStorage.getItem('activeUser')) {
