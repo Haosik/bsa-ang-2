@@ -22,6 +22,8 @@ import { MdButtonModule, MdInputModule, MdIconModule, MdSortModule, MdSelectModu
 import { UsersService } from './services/users.service';
 import { ProfileComponent } from './home/profile/profile.component';
 
+import { TimerModule } from './timermodule/timer.module';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ProfileComponent } from './home/profile/profile.component';
     MdIconModule,
     MdSortModule,
     MdSelectModule,
-    MdTabsModule
+    MdTabsModule,
+    TimerModule
   ],
   providers: [UsersService, AuthGuard, BlockWhenAuthGuard],
   bootstrap: [AppComponent]
