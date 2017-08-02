@@ -7,12 +7,14 @@
         <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
           placeholder="Email">
       </md-input-container>
+      <div *ngIf="wrongEmail" class="error">Wrong email :(</div>
     </div>
 
     <div class="form-box">
       <md-input-container class="">
         <input ngModel name="password" type="password" [minlength]="3" mdInput required placeholder="Password">
       </md-input-container>
+      <div *ngIf="wrongPassword" class="error">Wrong password :(</div>
     </div>
 
     <button type="submit" md-raised-button>Log in</button>

@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  wrongEmail = false;
+  wrongPassword = false;
+  emailTimeout: any;
+  passwordTimeout: any;
+
   constructor(private usersService: UsersService, public router: Router) { }
 
   loginStatus: string;
@@ -19,8 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm(form) {
-    const login = { ...form.value };
-    console.log(login);
+    this.wrongEmail = false;
+    this.wrongPassword = false;
+    clearTimeout(this.emailTimeout);
+    clearTimeout(this.passwordTimeout);
+    const login = {...form.value };
     this.usersService.checkUserLogin(login, (status, user) => {
       this.loginStatus = status;
 
@@ -29,10 +37,16 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
         return;
       } else if (this.loginStatus === 'wrong email') {
-        console.log('Wrong email!');
+        this.wrongEmail = true;
+        this.emailTimeout = setTimeout(() => {
+          this.wrongEmail = false;
+        }, 3000);
         return;
       } else if (this.loginStatus === 'wrong password') {
-        console.log('Wrong password!');
+        this.wrongPassword = true;
+        this.passwordTimeout = setTimeout(() => {
+          this.wrongPassword = false;
+        }, 3000);
         return;
       }
     });
