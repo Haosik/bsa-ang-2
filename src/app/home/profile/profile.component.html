@@ -1,0 +1,46 @@
+<div class="container">
+  <h3>My profile:</h3>
+  <div>{{user.first_name}}</div>
+  <div>{{user.last_name}}</div>
+  <div>{{user.email}}</div>
+  <div>{{user.year}}</div>
+  <div>{{user.password}}</div>
+
+  <h3>Change profile info:</h3>
+  <form novalidate (ngSubmit)="submitRegForm(regForm)" class="registration-form" id="registration-form" #regForm="ngForm">
+
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="first_name" mdInput placeholder="First name">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="last_name" mdInput placeholder="Last name">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          placeholder="Email">
+      </md-input-container>
+    </div>
+    <div class="form-box">
+      <md-select [(ngModel)]="year" name="year" required floatPlaceholder="never">
+        <md-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </md-option>
+      </md-select>
+      <label class="year-misc">Birth year</label>
+    </div>
+    <div class="form-box">
+      <md-input-container class="">
+        <input ngModel name="password" type="password" [minlength]="3" mdInput required placeholder="Password">
+      </md-input-container>
+    </div>
+
+    <button type="submit" md-raised-button>Submit form</button>
+
+  </form>
+
+</div>

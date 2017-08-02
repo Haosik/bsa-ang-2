@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './error404/error.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RecoverComponent } from './recover/recover.component';
 import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { LoginComponent } from './login/login.component';
 
-import { AuthGuard } from './auth.guard';
-import { BlockWhenAuthGuard } from './block-when-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { BlockWhenAuthGuard } from './guards/block-when-auth.guard';
 
 const routes: Routes = [
   {

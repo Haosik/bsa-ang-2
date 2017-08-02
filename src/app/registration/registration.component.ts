@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UsersService } from '../users.service';
+import { UsersService } from '../services/users.service';
 import { FormsModule } from '@angular/forms';
-import { User } from '../user';
+import { User } from '../classes/user';
 
 @Component({
   selector: 'app-registration',

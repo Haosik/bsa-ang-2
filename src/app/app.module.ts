@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './auth.guard';
-import { BlockWhenAuthGuard } from './block-when-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { BlockWhenAuthGuard } from './guards/block-when-auth.guard';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -11,16 +11,16 @@ import { LoginComponent } from './login/login.component';
 import { RecoverComponent } from './recover/recover.component';
 import { RecoveredComponent } from './recover/recovered/recovered.component';
 import { HeaderComponent } from './header/header.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './error404/error.component';
 import { HomeComponent } from './home/home.component';
-import { UserslistComponent } from './userslist/userslist.component';
+import { UserslistComponent } from './home/userslist/userslist.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdInputModule, MdIconModule, MdSortModule, MdSelectModule, MdTabsModule } from '@angular/material';
 
 
-import { UsersService } from './users.service';
-import { ProfileComponent } from './profile/profile.component';
+import { UsersService } from './services/users.service';
+import { ProfileComponent } from './home/profile/profile.component';
 
 
 @NgModule({
