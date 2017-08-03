@@ -33,7 +33,7 @@ export class UsersService {
   getUsersFromStorage() {
     this.usersInStorage = JSON.parse(localStorage.getItem('usersList'));
 
-    if (this.usersInStorage.length > 0) {
+    if (this.usersInStorage && this.usersInStorage.length > 0) {
       this.users = [...this.usersInStorage];
     } else {
       this.users = [...this.mockedUsers];
