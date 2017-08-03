@@ -116,8 +116,22 @@ export class UsersService {
   }
 
 
-  update(user: User) {
-    return this.users[0];
+  update(user: User, cb) {
+    const { email, first_name, last_name, year, password } = user;
+    this.users.forEach((el, ind) => {
+      if (el.email === user.email) {
+        el.id = ind;
+        el.email = email;
+        el.first_name = first_name;
+        el.last_name = last_name;
+        el.year = year;
+        el.password = password;
+      }
+    });
+    localStorage.setItem('usersList', JSON.stringify(this.users));
+    this.setActiveUser(JSON.stringify(user));
+    cb(this.users);
+    return;
   }
 
   generateRandomNum(end) {

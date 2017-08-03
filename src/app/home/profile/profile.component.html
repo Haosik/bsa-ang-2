@@ -1,32 +1,26 @@
 <div class="container">
-  <h3>My profile:</h3>
-  <div>{{user.first_name}}</div>
-  <div>{{user.last_name}}</div>
-  <div>{{user.email}}</div>
-  <div>{{user.year}}</div>
-  <div>{{user.password}}</div>
 
-  <h3>Change profile info:</h3>
-  <form novalidate (ngSubmit)="submitRegForm(regForm)" class="registration-form" id="registration-form" #regForm="ngForm">
+  <h3>Change my profile info:</h3>
+  <form novalidate (ngSubmit)="submitProfileForm(profileForm)" class="profile-form" id="profile-form" #profileForm="ngForm">
 
     <div class="form-box">
       <md-input-container class="">
-        <input ngModel name="first_name" mdInput placeholder="First name">
+        <input [(ngModel)]="first_name" name="first_name" mdInput placeholder="First name">
       </md-input-container>
     </div>
     <div class="form-box">
       <md-input-container class="">
-        <input ngModel name="last_name" mdInput placeholder="Last name">
+        <input [(ngModel)]="last_name" name="last_name" value="first_name" mdInput placeholder="Last name">
       </md-input-container>
     </div>
     <div class="form-box">
       <md-input-container class="">
-        <input autocomplete="false" ngModel name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        <input autocomplete="false" [(ngModel)]="email" name="email" email mdInput required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
           placeholder="Email">
       </md-input-container>
     </div>
     <div class="form-box">
-      <md-select [(ngModel)]="year" name="year" required floatPlaceholder="never">
+      <md-select [(ngModel)]="year" name="year" required placeholder="year">
         <md-option *ngFor="let year of years" [value]="year">
           {{ year }}
         </md-option>
@@ -35,11 +29,13 @@
     </div>
     <div class="form-box">
       <md-input-container class="">
-        <input ngModel name="password" type="password" [minlength]="3" mdInput required placeholder="Password">
+        <input [(ngModel)]="password" name="password" [type]='showPassword ? "text" : "password"' [minlength]="3" mdInput required placeholder="Password">
       </md-input-container>
+      <button type="button" class="toggle-password" (click)="togglePassword($event)"><md-icon>remove_red_eye</md-icon></button>
     </div>
 
     <button type="submit" md-raised-button>Submit form</button>
+    <div changed-notification *ngIf="changedNotif">Congratulations! Information changed!</div>
 
   </form>
 

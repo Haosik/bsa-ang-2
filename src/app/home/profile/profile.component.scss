@@ -1,0 +1,15 @@
+.toggle-password {
+  color: #eee;
+  border: none;
+  background-color: #303030;
+  cursor: pointer;
+  outline: none;
+  md-icon {
+    pointer-events: none;
+    transform: scaleY(1);
+    transition: transform 0.2s ease-in-out;
+  }
+  &.active md-icon {
+    transform: scaleY(0.7);
+  }
+}
